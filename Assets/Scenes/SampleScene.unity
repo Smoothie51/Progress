@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96acbad974029ab49b4288d2e4e9afe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  rotationSpeed: 15
+  rotationSpeed: 40
 --- !u!135 &227843774
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -402,7 +402,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 559b37083593fd042bbbd42fcc053cc8, type: 2}
+  - {fileID: 2100000, guid: 875fbcb4defad8a41a20175b20bee5fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2027,7 +2027,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '1700
+  m_text: 'Year: 1700
 
 '
   m_isRightToLeft: 0
