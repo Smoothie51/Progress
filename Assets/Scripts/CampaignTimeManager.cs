@@ -72,9 +72,9 @@ public class CampaignTimeManager : MonoBehaviour
     void CalculateRotationSpeeds()
     {
         // 360 degrees divided by how long a year lasts
-        currentSunOrbitSpeed = 360f / secondsPerYearBase;
+        currentSunOrbitSpeed = 90f / secondsPerYearBase;
         
         // Moon moves 12.4x faster than Earth's annual cycle
-        currentMoonOrbitSpeed = currentSunOrbitSpeed * 12.4f;
+        currentMoonOrbitSpeed = currentSunOrbitSpeed * 3.5f;
     }
 }
