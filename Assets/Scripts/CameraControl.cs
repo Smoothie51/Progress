@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class EarthCameraController : MonoBehaviour
 {
@@ -60,6 +61,8 @@ public class EarthCameraController : MonoBehaviour
 
     void HandleZoom(InputAction.CallbackContext context)
     {
+        if (!(EventSystem.current == null || !EventSystem.current.IsPointerOverGameObject())) 
+            return;
         float scrollInput = context.ReadValue<Vector2>().y;
         
         if (Mathf.Abs(scrollInput) > 0.01f)
@@ -73,6 +76,8 @@ public class EarthCameraController : MonoBehaviour
 
     void MousePanning(InputAction.CallbackContext context)
     {
+        if (!(EventSystem.current == null || !EventSystem.current.IsPointerOverGameObject())) 
+            return;
         Vector2 delta = context.ReadValue<Vector2>();
 
         // Accumulate rotation modifications safely into our tracking variables

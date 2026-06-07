@@ -18,6 +18,8 @@ public class PolicyRuntimeNode : MonoBehaviour
     [SerializeField] private Image iconImage;
     [SerializeField] private Button nodeButton;
 
+    private bool permanentlyDisabled = false;
+
     void Start()
     {
         if (ringObject == null) ringObject = transform.Find("Ring").gameObject;
@@ -36,6 +38,14 @@ public class PolicyRuntimeNode : MonoBehaviour
 
     public NodeState CheckNodeState(HashSet<PolicyNodeData> unlockedPolicies, int currentYear)
     {
+        if (permanentlyDisabled) return NodeState.Locked;
+        foreach (var rival in data.mutuallyExclusiveWith)
+        {
+            if (rival != null && unlockedPolicies.Contains(rival)) {
+                permanentlyDisabled = true;
+                return NodeState.Locked;
+            }
+        }
         if (unlockedPolicies.Contains(data)) return NodeState.Unlocked;
         if (currentYear < data.minimumYearRequired) return NodeState.Locked;
         if (data.isRootNode) return NodeState.Available;
@@ -54,7 +64,10 @@ public class PolicyRuntimeNode : MonoBehaviour
             case NodeState.Locked:  // Greyed + no ring + non-interactable
                 ringObject.SetActive(false);
                 nodeButton.interactable = false;
-                iconImage.color = Color.gray;
+                if (permanentlyDisabled) 
+                    iconImage.color = new Color(0.4f, 0.1f, 0.1f, 0.5f);
+                else
+                    iconImage.color = Color.gray;
                 break;
             case NodeState.Available: // no ring + interactable
                 ringObject.SetActive(false);

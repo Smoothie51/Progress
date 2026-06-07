@@ -12,6 +12,11 @@ public class PolicyNodeData : ScriptableObject
     public Sprite icon;
 
     [Header("Tree Topology")]
+    
+    [Tooltip("If any policy in this list is unlocked, this node becomes permanently disabled.")]
+    public PolicyNodeData[] mutuallyExclusiveWith;
+    
+    [Tooltip("All policies in this list must be unlocked before this node becomes available.")]
     public PolicyNodeData[] prerequisites;
     public bool isRootNode = false;
     
