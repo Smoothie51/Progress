@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class PolicyRuntimeNode : MonoBehaviour
+public class PolicyRuntimeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public PolicyNodeData data;
     
@@ -97,5 +98,29 @@ public class PolicyRuntimeNode : MonoBehaviour
 
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log($"Hovering over {data.policyName} node. Current state: {currentState}");
+        if (data == null || ToolTip.Instance == null) return;
 
+        string displayDescription = data.description;
+        string positiveModifier = data.positiveModifier;
+        string negativeModifier = data.negativeModifier;
+        if (currentState == NodeState.Locked)
+        {
+            displayDescription += "\n\n<color=red><i>Requires previous policies or chronological milestones.</i></color>";
+            data.positiveModifier = "";
+            data.negativeModifier = "";
+        }
+
+        // Pass the ScriptableObject string packages straight to the single UI display instance
+        ToolTip.Instance.ShowTooltip(data.policyName, data.icon, displayDescription, positiveModifier, negativeModifier);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Debug.Log($"Stopped hovering over {data.policyName} node.");
+        if (ToolTip.Instance != null)
+            ToolTip.Instance.HideTooltip();
+    }
 }

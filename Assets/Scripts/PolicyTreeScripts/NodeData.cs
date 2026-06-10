@@ -15,11 +15,15 @@ public class PolicyNodeData : ScriptableObject
     
     [Tooltip("If any policy in this list is unlocked, this node becomes permanently disabled.")]
     public PolicyNodeData[] mutuallyExclusiveWith;
-    
+
     [Tooltip("All policies in this list must be unlocked before this node becomes available.")]
     public PolicyNodeData[] prerequisites;
     public bool isRootNode = false;
     
     [Header("Unlock Constraints")]  
     public int minimumYearRequired = 1760;
+
+    [Header("Gameplay Effects")]
+    public string positiveModifier;
+    public string negativeModifier;
 }
