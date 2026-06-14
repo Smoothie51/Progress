@@ -23,7 +23,10 @@ public class PolicyNodeData : ScriptableObject
     [Header("Unlock Constraints")]  
     public int minimumYearRequired = 1760;
 
-    [Header("Gameplay Effects")]
+    [Header("Gameplay Effects Descriptions")]
     public string positiveModifier;
     public string negativeModifier;
+
+    [Header("Gameplay Effects Values (0.0 to 1.0)")]
+    public EarthMetrics metricShifts;
 }
