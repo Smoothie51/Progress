@@ -15,6 +15,7 @@ public class EdgeGenerator : MonoBehaviour
     [Header("Line Settings")]
     public float lineWidth = 2f;
     private List<(Image edge, PolicyRuntimeNode[] nodeConnected)> nodeLineMap = new List<(Image, PolicyRuntimeNode[])>();
+    private Dictionary<PolicyNodeData, PolicyRuntimeNode> dataToNodeMap = new Dictionary<PolicyNodeData, PolicyRuntimeNode>();
 
     [ContextMenu("Generate Tree Lines")] 
 
@@ -33,18 +34,26 @@ public class EdgeGenerator : MonoBehaviour
             return;
         }
 
-        // 1. Get all PolicyNodes sitting inside the Nodes container
+        // 1. Get all PolicyNodes and build a map from PolicyNodeData to PolicyRuntimeNode
         PolicyRuntimeNode[] nodes = nodesContainer.GetComponentsInChildren<PolicyRuntimeNode>();
-
-
-
+        dataToNodeMap.Clear();
+        
         foreach (PolicyRuntimeNode node in nodes)
         {
-            if (node == null || node.childNodes == null) continue;
-
-            foreach (PolicyRuntimeNode childNode in node.childNodes)
+            if (node != null && node.data != null)
             {
-                if (childNode == null) continue;
+                dataToNodeMap[node.data] = node;
+            }
+        }
+
+        // 2. Iterate through all nodes and use their data's child policies to draw lines
+        foreach (PolicyRuntimeNode node in nodes)
+        {
+            if (node == null || node.data == null || node.data.childPolicies == null) continue;
+
+            foreach (PolicyNodeData childData in node.data.childPolicies)
+            {
+                if (childData == null || !dataToNodeMap.TryGetValue(childData, out PolicyRuntimeNode childNode)) continue;
 
                 GameObject lineObj = Instantiate(linePrefab, transform);
                 lineObj.name = $"{node.gameObject.name} -> {childNode.gameObject.name} Line";
@@ -57,20 +66,20 @@ public class EdgeGenerator : MonoBehaviour
                     RectTransform parentRect = node.GetComponent<RectTransform>();
                     RectTransform childRect = childNode.GetComponent<RectTransform>();
 
-                    // 2. Set pivot to middle-left so it stretches and rotates from its starting edge
+                    // 3. Set pivot to middle-left so it stretches and rotates from its starting edge
                     lineRect.pivot = new Vector2(0f, 0.5f);
 
-                    // 3. Snap the start of the line exactly to the parent node's UI center coordinates
+                    // 4. Snap the start of the line exactly to the parent node's UI center coordinates
                     lineRect.anchoredPosition = parentRect.anchoredPosition; 
 
-                    // 4. Calculate the directional vector using pure UI coordinates
+                    // 5. Calculate the directional vector using pure UI coordinates
                     Vector2 uiDirection = childRect.anchoredPosition - parentRect.anchoredPosition;
 
-                    // 5. Calculate UI distance and set line length
+                    // 6. Calculate UI distance and set line length
                     float distance = uiDirection.magnitude;
                     lineRect.sizeDelta = new Vector2(distance, 2f);
 
-                    // 6. Rotate line to point directly from parent node to child node
+                    // 7. Rotate line to point directly from parent node to child node
                     float angle = Mathf.Atan2(uiDirection.y, uiDirection.x) * Mathf.Rad2Deg;
                     lineRect.localRotation = Quaternion.Euler(0, 0, angle);
 

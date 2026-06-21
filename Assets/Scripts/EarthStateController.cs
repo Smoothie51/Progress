@@ -1,8 +1,14 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EarthStateController : MonoBehaviour
 {
+    public static EarthStateController Instance { get; private set; }
     [SerializeField] private EarthMetrics currentMetrics;
+
+    [Header("Active Legislation Trackers")]
+    [SerializeField] private List<PolicyEnacting> activeEnactingPolicies = new List<PolicyEnacting>();
+    public HashSet<PolicyNodeData> fullyImplementedPolicies = new HashSet<PolicyNodeData>();
     
     // Backing fields for read-only properties
     private float _environmentalIntegrity;
@@ -29,6 +35,8 @@ public class EarthStateController : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
         // Initialize metrics to neutral values if not set
         if (currentMetrics.airQuality == 0)
         {
@@ -38,10 +46,6 @@ public class EarthStateController : MonoBehaviour
         RecalculateDerivedValues();
     }
 
-    /// <summary>
-    /// Applies a policy's metric modifiers to the current state and recalculates derived values.
-    /// Call this when a policy node is clicked.
-    /// </summary>
     public void ApplyPolicyModifier(PolicyNodeData policyNode)
     {
         if (policyNode == null) return;
@@ -59,27 +63,18 @@ public class EarthStateController : MonoBehaviour
         currentMetrics.researchCapacity = Mathf.Clamp01(currentMetrics.researchCapacity + policyNode.metricShifts.researchCapacity);
         currentMetrics.economicGrowth = Mathf.Clamp01(currentMetrics.economicGrowth + policyNode.metricShifts.economicGrowth);
         currentMetrics.energyAvailability = Mathf.Clamp01(currentMetrics.energyAvailability + policyNode.metricShifts.energyAvailability);
-        currentMetrics.resourceavailability = Mathf.Clamp01(currentMetrics.resourceavailability + policyNode.metricShifts.resourceavailability);
+        currentMetrics.resourceAvailability = Mathf.Clamp01(currentMetrics.resourceAvailability + policyNode.metricShifts.resourceAvailability);
 
         currentMetrics.publicApproval = Mathf.Clamp01(currentMetrics.publicApproval + policyNode.metricShifts.publicApproval);
 
         // Recalculate derived values
         RecalculateDerivedValues();
     }
-
-    /// <summary>
-    /// Recalculates Environmental Integrity and Technological Advancement based on current metrics.
-    /// </summary>
     private void RecalculateDerivedValues()
     {
         _environmentalIntegrity = CalculateEnvironmentalIntegrity();
         _technologicalAdvancement = CalculateTechnologicalAdvancement();
     }
-
-    /// <summary>
-    /// Calculates Environmental Integrity as a weighted average of environmental metrics.
-    /// Returns a value strictly between 0.0f and 1.0f.
-    /// </summary>
     private float CalculateEnvironmentalIntegrity()
     {
         float integrity = 
@@ -93,11 +88,6 @@ public class EarthStateController : MonoBehaviour
 
         return Mathf.Clamp01(integrity);
     }
-
-    /// <summary>
-    /// Calculates Technological Advancement as a weighted average of technology metrics.
-    /// Returns a value strictly between 0.0f and 1.0f.
-    /// </summary>
     private float CalculateTechnologicalAdvancement()
     {
         float advancement = 
@@ -105,14 +95,10 @@ public class EarthStateController : MonoBehaviour
             (currentMetrics.IndustrialCapacity * WEIGHT_INDUSTRIAL_CAPACITY) +
             (currentMetrics.economicGrowth * WEIGHT_ECONOMIC_GROWTH) +
             (currentMetrics.energyAvailability * WEIGHT_ENERGY_AVAILABILITY) +
-            (currentMetrics.resourceavailability * WEIGHT_RESOURCE_AVAILABILITY);
+            (currentMetrics.resourceAvailability * WEIGHT_RESOURCE_AVAILABILITY);
 
         return Mathf.Clamp01(advancement);
     }
-
-    /// <summary>
-    /// Resets all metrics to neutral/starting values (0.5f).
-    /// </summary>
     private void ResetMetricsToDefaults()
     {
         currentMetrics.airQuality = 0.95f;             // Crisp, unpolluted skies globally
@@ -128,10 +114,59 @@ public class EarthStateController : MonoBehaviour
         currentMetrics.researchCapacity = 0.15f;       // Limited; pre-scientific method expansion, manual libraries
         currentMetrics.economicGrowth = 0.08f;         // Slow, agrarian-based mercantile economy
         currentMetrics.energyAvailability = 0.10f;     // Dependent on timber, charcoal, and watermills
-        currentMetrics.resourceavailability = 0.75f;   // High; vast coal veins and timber stocks sit completely untapped
+        currentMetrics.resourceAvailability = 0.75f;   // High; vast coal veins and timber stocks sit completely untapped
 
         // === SOCIO-ECONOMIC ===
         currentMetrics.publicApproval = 0.65f;         // Stable but agrarian lifestyle baseline; highly vulnerable to crop failures
+    }
+
+    public void ProcessPolicySignature(PolicyNodeData signedPolicy)
+    {
+        // 1. Instead of modifying variables immediately, wrap it into our active incremental tracer
+        PolicyEnacting newEnactment = new PolicyEnacting(signedPolicy);
+        activeEnactingPolicies.Add(newEnactment);
+
+        // 2. Refresh the UI Tree layout immediately so neighbor nodes know a path has been opened/started
+        // (If your tree requirements state a node must be fully complete to progress, move this step!)
+        if (PolicyTreeManager.Instance != null)
+        {
+            PolicyTreeManager.Instance.RefreshTreeLayout();
+        }
+    }
+    public void OnCalendarYearAdvanced()
+    {
+        if (activeEnactingPolicies.Count == 0) return;
+
+        // Process backward through the array so we can safely remove items while looping
+        for (int i = activeEnactingPolicies.Count - 1; i >= 0; i--)
+        {
+            PolicyEnacting activePolicy = activeEnactingPolicies[i];
+
+            // Apply this year's incremental slice to your active structural dataset
+            currentMetrics.airQuality += activePolicy.incrementalShiftsPerYear.airQuality;
+            currentMetrics.oceanCleanliness += activePolicy.incrementalShiftsPerYear.oceanCleanliness;
+            currentMetrics.forestDensity += activePolicy.incrementalShiftsPerYear.forestDensity;
+            currentMetrics.biodiversityHealth += activePolicy.incrementalShiftsPerYear.biodiversityHealth;
+            currentMetrics.magneticFieldStrength += activePolicy.incrementalShiftsPerYear.magneticFieldStrength;
+            currentMetrics.climateVolatility += activePolicy.incrementalShiftsPerYear.climateVolatility;
+            // ... apply your remaining fields ...
+
+            activePolicy.yearsRemaining--;
+
+            // If the duration hits zero, the policy is officially completed!
+            if (activePolicy.yearsRemaining <= 0)
+            {
+                fullyImplementedPolicies.Add(activePolicy.policyData);
+                activeEnactingPolicies.RemoveAt(i);
+                Debug.Log($"<color=green><b>Policy Alert:</b> {activePolicy.policyData.policyName} has been 100% phased in!</color>");
+            }
+        }
+
+        // Keep values structurally verified inside 0-1 bounds
+        currentMetrics.ClampMetrics();
+
+        // Push new fractional averages to your Atmosphere, Aurora, and Terrain surface shaders/particles!
+        RecalculateDerivedValues();
     }
 
     public EarthMetrics GetCurrentMetrics()

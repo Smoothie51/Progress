@@ -10,8 +10,7 @@ public class PolicyRuntimeNode : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public enum NodeState { Locked, Available, Unlocked }
     public NodeState currentState = NodeState.Locked;
 
-    // References to the UI buttons connecting this node to its neighbors
-    public List<PolicyRuntimeNode> childNodes = new List<PolicyRuntimeNode>();
+
 
     [Header("Cached UI References")]
     [SerializeField] private GameObject ringObject;

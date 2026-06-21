@@ -13,6 +13,9 @@ public class PolicyNodeData : ScriptableObject
 
     [Header("Tree Topology")]
     
+    [Tooltip("Child policies that become available after this policy is unlocked.")]
+    public PolicyNodeData[] childPolicies;
+    
     [Tooltip("If any policy in this list is unlocked, this node becomes permanently disabled.")]
     public PolicyNodeData[] mutuallyExclusiveWith;
 
@@ -26,6 +29,10 @@ public class PolicyNodeData : ScriptableObject
     [Header("Gameplay Effects Descriptions")]
     public string positiveModifier;
     public string negativeModifier;
+
+    [Header("Implementation Timeline")]
+    [Tooltip("How many years (or timeline ticks) it takes for this policy's effects to fully phase in.")]
+    public int executionDurationYears = 5;
 
     [Header("Gameplay Effects Values (0.0 to 1.0)")]
     public EarthMetrics metricShifts;

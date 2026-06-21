@@ -18,7 +18,7 @@ public struct EarthMetrics
     [Range(0f, 1f)] public float researchCapacity;
     [Range(0f, 1f)] public float economicGrowth; 
     [Range(0f, 1f)] public float energyAvailability;
-    [Range(0f, 1f)] public float resourceavailability;
+    [Range(0f, 1f)] public float resourceAvailability;
 
     [Header("Socio-Economic Constraints (0.0 to 1.0)")]
     [Range(0f, 1f)] public float publicApproval;
@@ -38,7 +38,7 @@ public struct EarthMetrics
         researchCapacity = Mathf.Clamp01(researchCapacity);
         economicGrowth = Mathf.Clamp01(economicGrowth);
         energyAvailability = Mathf.Clamp01(energyAvailability);
-        resourceavailability = Mathf.Clamp01(resourceavailability);
+        resourceAvailability = Mathf.Clamp01(resourceAvailability);
 
         publicApproval = Mathf.Clamp01(publicApproval);
     }

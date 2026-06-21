@@ -17,6 +17,7 @@ public class CampaignTimeManager : MonoBehaviour
     public float currentSunOrbitSpeed;
     public float currentMoonOrbitSpeed;
 
+
     private float yearProgressTimer = 0f;
 
     void Awake()
@@ -51,6 +52,8 @@ public class CampaignTimeManager : MonoBehaviour
     void OnYearAdvanced()
     {
         UpdateUI();
+
+        EarthStateController.Instance.OnCalendarYearAdvanced();
         
         // Dynamic Era Check Example
         if (currentYear == 2000)
