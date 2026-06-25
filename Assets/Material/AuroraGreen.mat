@@ -42,10 +42,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DissolvePower: 6.8552003
+    - _DissolvePower: 5.48
     - _MaskPower: 1
     - _NoiseScale: 32
-    - _Opacity: 0.4113
+    - _Opacity: 0.46
     - _QueueControl: 0
     - _QueueOffset: 0
     - _WobbleAmount: 1

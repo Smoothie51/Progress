@@ -9,8 +9,6 @@ public struct EarthMetrics
     [Range(0f, 1f)] public float forestDensity;
     [Range(0f, 1f)] public float biodiversityHealth;
     [Range(0f, 1f)] public float magneticFieldStrength;
-    [Range(0f, 1f)] public float soilFertility;
-    [Range(0f, 1f)] public float freshwaterAvailability;
     [Range(0f, 1f)] public float climateVolatility;
 
     [Header("Technological & Industrial Sub-Metrics (0.0 to 1.0)")]

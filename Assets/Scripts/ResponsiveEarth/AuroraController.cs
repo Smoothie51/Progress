@@ -18,11 +18,11 @@ public class AuroraController : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    public void UpdateAuroraIntensity(float magneticFieldStrength)
+    public void UpdateAuroraIntensity(EarthMetrics metrics)
     {
         if (auroraMaterial == null) return;
 
-        float clampedStrength = Mathf.Clamp01(magneticFieldStrength);
+        float clampedStrength = Mathf.Clamp01(metrics.magneticFieldStrength);
 
         float dissolveTarget = Mathf.Lerp(0.8f, 6f, clampedStrength);
 

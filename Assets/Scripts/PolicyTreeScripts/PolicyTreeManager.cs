@@ -43,6 +43,7 @@ public class PolicyTreeManager : MonoBehaviour
         {
             unlockedPolicies.Add(policy);
             RefreshTreeLayout();
+            EarthStateController.Instance.ProcessPolicySignature(policy);
         }
     }
 }

@@ -39,14 +39,16 @@ Material:
     m_Ints: []
     m_Floats:
     - _AtmoThickness: 0
-    - _Opacity: 0
+    - _Opacity: 0.442
     - _PollutionLevel: 0
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Thickness: 1.01
     - _WindSpeed: 1
     - _level: 0
     m_Colors:
     - _AtmoColor: {r: 0.7812834, g: 0.9150943, b: 0.89433146, a: 1}
+    - _Color: {r: 0.17357245, g: 0.23692554, b: 0.32393554, a: 1}
     - _SmogColor: {r: 0.43137255, g: 0.38431373, b: 0.33333334, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

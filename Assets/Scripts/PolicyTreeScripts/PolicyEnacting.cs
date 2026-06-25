@@ -21,8 +21,6 @@ public class PolicyEnacting
         incrementalShiftsPerYear.biodiversityHealth = data.metricShifts.biodiversityHealth / duration;
         incrementalShiftsPerYear.magneticFieldStrength = data.metricShifts.magneticFieldStrength / duration;
         incrementalShiftsPerYear.climateVolatility = data.metricShifts.climateVolatility / duration;
-        incrementalShiftsPerYear.soilFertility = data.metricShifts.soilFertility / duration;
-        incrementalShiftsPerYear.freshwaterAvailability = data.metricShifts.freshwaterAvailability / duration;
         incrementalShiftsPerYear.IndustrialCapacity = data.metricShifts.IndustrialCapacity / duration;
         incrementalShiftsPerYear.researchCapacity = data.metricShifts.researchCapacity / duration;
         incrementalShiftsPerYear.economicGrowth = data.metricShifts.economicGrowth / duration;

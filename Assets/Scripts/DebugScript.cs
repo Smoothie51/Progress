@@ -26,20 +26,4 @@ public class AtmoDebugger : MonoBehaviour
             Aurora = GameMaster.GetComponent<AuroraController>();
         }
     }
-
-    void Update()
-    {
-        if (Atmosphere == null) return;
-
-        if (Ranged)
-        {
-            //Atmosphere.UpdateAtmosphere(Color, Thickness, Opacity, WindSpeed);
-        }
-        if (Aurora != null)
-        {
-            Aurora.UpdateAuroraIntensity(magneticFieldStrength);
-        }
-
-
-    }
 }

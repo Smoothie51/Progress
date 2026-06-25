@@ -54,7 +54,7 @@ public class CampaignTimeManager : MonoBehaviour
         UpdateUI();
 
         EarthStateController.Instance.OnCalendarYearAdvanced();
-        
+        Debug.Log("Year Advanced");
         // Dynamic Era Check Example
         if (currentYear == 2000)
         {
