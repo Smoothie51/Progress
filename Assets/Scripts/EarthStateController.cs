@@ -24,7 +24,7 @@ public class EarthStateController : MonoBehaviour
     // Weights for Environmental Integrity calculation
     private const float WEIGHT_AIR_QUALITY = 0.20f;
     private const float WEIGHT_OCEAN_CLEANLINESS = 0.15f;
-    private const float WEIGHT_FOREST_DENSITY = 0.15f;
+    private const float WEIGHT_FOREST_DENSITY = 0.20f;
     private const float WEIGHT_BIODIVERSITY_HEALTH = 0.15f;
     private const float WEIGHT_MAGNETIC_FIELD_STRENGTH = 0.20f;
     // Weights for Technological Advancement calculation
@@ -33,6 +33,9 @@ public class EarthStateController : MonoBehaviour
     private const float WEIGHT_ECONOMIC_GROWTH = 0.20f;
     private const float WEIGHT_ENERGY_AVAILABILITY = 0.15f;
     private const float WEIGHT_RESOURCE_AVAILABILITY = 0.10f;
+
+    public EarthMetrics previousMetrics;
+
 
     private void Awake()
     {
@@ -47,11 +50,18 @@ public class EarthStateController : MonoBehaviour
 
     public void Start()
     {
+        previousMetrics = currentMetrics;
         RecalculateDerivedValues();
     }
 
     public void Update(){
-        OnMetricsUpdated?.Invoke(currentMetrics);
+        if(!currentMetrics.Equals(previousMetrics)){
+            previousMetrics = currentMetrics;
+            RecalculateDerivedValues();
+            updateEarth();
+            OnMetricsUpdated?.Invoke(currentMetrics);
+        }
+        
     }
 
     private void RecalculateDerivedValues()
@@ -110,16 +120,8 @@ public class EarthStateController : MonoBehaviour
             PolicyTreeManager.Instance.RefreshTreeLayout();
         }
     }
-    public void OnCalendarYearAdvanced()
-    {
-        if (activeEnactingPolicies.Count > 0) progressPolicy();
-
-        RecalculateDerivedValues();
-        OnMetricsUpdated?.Invoke(currentMetrics);
-        updateEarth();
-    }
-
-    private void progressPolicy() {
+    public void AdvancePolicy(){
+        if (activeEnactingPolicies.Count <= 0) return;
         for (int i = activeEnactingPolicies.Count - 1; i >= 0; i--)
         {
             PolicyEnacting activePolicy = activeEnactingPolicies[i];

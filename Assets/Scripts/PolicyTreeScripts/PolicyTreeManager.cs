@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
+using TMPro;
 
 public class PolicyTreeManager : MonoBehaviour
 {
@@ -9,6 +11,11 @@ public class PolicyTreeManager : MonoBehaviour
     public HashSet<PolicyNodeData> unlockedPolicies = new HashSet<PolicyNodeData>();
     private PolicyRuntimeNode[] allPolicyNodes;
 
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI policyPointsText;
+
+    [SerializeField] private int policyPoints;
+    private float pointBuffer;
 
     void Awake()
     {
@@ -24,6 +31,7 @@ public class PolicyTreeManager : MonoBehaviour
         EdgeGenerator.Instance.GenerateAllConnections();
 
         RefreshTreeLayout();
+        UpdatePolicyPointsText();
     }
 
     public void RefreshTreeLayout()
@@ -37,13 +45,48 @@ public class PolicyTreeManager : MonoBehaviour
         }
     }
 
-    public void UnlockPolicy(PolicyNodeData policy)
+    private void UpdatePolicyPointsText()
     {
-        if (!unlockedPolicies.Contains(policy))
+        if (policyPointsText == null) return;
+        policyPointsText.text = policyPoints.ToString();
+    }
+
+    public bool UnlockPolicy(PolicyNodeData policy)
+    {
+        if (policy == null) return false;
+        if (unlockedPolicies.Contains(policy)) return false;
+        if (policyPoints < policy.policyPointsNeeded) return false;
+
+        policyPoints -= policy.policyPointsNeeded;
+        UpdatePolicyPointsText();
+
+        unlockedPolicies.Add(policy);
+        RefreshTreeLayout();
+        EarthStateController.Instance.ProcessPolicySignature(policy);
+        return true;
+    }
+
+    public void AddPoints(int pointsToAdd)
+    {
+        if (pointsToAdd <= 0) return;
+
+        policyPoints += pointsToAdd;
+        UpdatePolicyPointsText();
+    }
+    public void GeneratePoints()
+    {
+        float baseGeneration = EarthStateController.Instance.currentMetrics.economicGrowth * 10f; 
+        float researchMultiplier = 1f + (EarthStateController.Instance.currentMetrics.researchCapacity * 1.5f); // Up to a 2.5x multiplier
+        
+        float pointsGeneratedThisYear = baseGeneration * researchMultiplier;
+
+        pointBuffer += pointsGeneratedThisYear;
+        
+        if (pointBuffer >= 1f)
         {
-            unlockedPolicies.Add(policy);
-            RefreshTreeLayout();
-            EarthStateController.Instance.ProcessPolicySignature(policy);
+            int wholePointsToAdd = Mathf.FloorToInt(pointBuffer);
+            AddPoints(wholePointsToAdd);
+            pointBuffer -= wholePointsToAdd; 
         }
     }
 }

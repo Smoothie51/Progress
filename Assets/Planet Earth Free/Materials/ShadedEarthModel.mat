@@ -47,10 +47,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _CityLights: 0
-    - _CityLightsAmount: 2.9774437
-    - _CityLightsBrightness: 0.22500001
+    - _CityLightsAmount: 2.7218046
+    - _CityLightsBrightness: 0.72
     - _DeadForest: 0
-    - _EarthSaturation: 1.4125
+    - _EarthSaturation: 1.3705001
     - _ForestDensity: 20
     - _GreenChannel: 1
     - _NightDesaturation: 0

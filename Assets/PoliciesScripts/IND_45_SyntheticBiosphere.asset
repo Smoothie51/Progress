@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: IND_45_SyntheticBiosphere
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: IND_45
+  policyName: Synthetic Biosphere
+  description: Replace all biological life with superior mechanical flora/fauna.
+  icon: {fileID: 0}
+  mutuallyExclusiveWith:
+  - {fileID: 11400000, guid: 94eba56f24679244fb3eadae8090771c, type: 2}
+  prerequisites:
+  - {fileID: 11400000, guid: bdf9f2f0109f37744b985922a508ee89, type: 2}
+  - {fileID: 11400000, guid: 9b0d3cb1235105847ba6fe29c438ac62, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 2085
+  policyPointsNeeded: 30
+  positiveModifier: Perfectly controlled climate
+  negativeModifier: Extinguishes the natural world
+  executionDurationYears: 20
+  metricShifts:
+    airQuality: 0.5
+    oceanCleanliness: 0.5
+    forestDensity: 0
+    biodiversityHealth: 0
+    magneticFieldStrength: 0
+    climateVolatility: 0
+    IndustrialCapacity: 0.5
+    researchCapacity: 0.5
+    economicGrowth: 0.2
+    energyAvailability: 0.2
+    resourceAvailability: 0.2
+    publicApproval: 0

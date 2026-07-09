@@ -90,11 +90,11 @@ public class PolicyRuntimeNode : MonoBehaviour, IPointerEnterHandler, IPointerEx
             return;
         }
 
-        PolicyTreeManager.Instance.UnlockPolicy(data);
-        
-        Debug.Log($"Law signed successfully: {data.policyName}");
-        EdgeGenerator.Instance.UpdateLineColorsForNode(this, Color.white, Color.green);
-
+        if (PolicyTreeManager.Instance.UnlockPolicy(data))
+        {
+            Debug.Log($"Law signed successfully: {data.policyName}");
+            EdgeGenerator.Instance.UpdateLineColorsForNode(this, Color.white, Color.green);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -103,11 +103,28 @@ public class PolicyRuntimeNode : MonoBehaviour, IPointerEnterHandler, IPointerEx
         if (data == null || ToolTip.Instance == null) return;
 
         string displayDescription = data.description;
+        if (data.mutuallyExclusiveWith != null && data.mutuallyExclusiveWith.Length > 0)
+        {
+            List<string> mutuallyExclusiveNames = new List<string>();
+            foreach (var mutuallyExclusivePolicy in data.mutuallyExclusiveWith)
+            {
+                if (mutuallyExclusivePolicy != null && !string.IsNullOrEmpty(mutuallyExclusivePolicy.policyName))
+                {
+                    mutuallyExclusiveNames.Add(mutuallyExclusivePolicy.policyName);
+                }
+            }
+
+            if (mutuallyExclusiveNames.Count > 0)
+            {
+                displayDescription = $"Mutually exclusive with: {string.Join(", ", mutuallyExclusiveNames )}\n{displayDescription}";
+            }
+        }
+
         string positiveModifier = data.positiveModifier;
         string negativeModifier = data.negativeModifier;
         if (currentState == NodeState.Locked)
         {
-            displayDescription += "\n\n<color=red><i>Requires previous policies or chronological milestones.</i></color>";
+            displayDescription = "<color=red><i>Unavailable</i></color>";
             data.positiveModifier = "";
             data.negativeModifier = "";
         }

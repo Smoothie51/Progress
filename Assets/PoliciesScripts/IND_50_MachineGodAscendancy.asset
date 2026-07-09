@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: IND_50_MachineGodAscendancy
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: IND_50
+  policyName: Machine God Ascendancy
+  description: The AI consumes the planet to become a celestial computer.
+  icon: {fileID: 0}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: 8323917cacbcbba4d9fde6056e3e5db0, type: 2}
+  - {fileID: 11400000, guid: b47c5f6cd0464f84b9132dc22b0232ae, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 2100
+  policyPointsNeeded: 50
+  positiveModifier: End of Biology, Dawn of Metal
+  negativeModifier: Game Over - Tech Victory
+  executionDurationYears: 50
+  metricShifts:
+    airQuality: 0
+    oceanCleanliness: 0
+    forestDensity: 0
+    biodiversityHealth: 0
+    magneticFieldStrength: 1
+    climateVolatility: 0
+    IndustrialCapacity: 1
+    researchCapacity: 1
+    economicGrowth: 1
+    energyAvailability: 1
+    resourceAvailability: 1
+    publicApproval: 0

@@ -11,7 +11,7 @@ public class CampaignTimeManager : MonoBehaviour
     [Header("Calendar Settings (1x Speed)")]
     public int currentYear = 1760;
     [Tooltip("How many real-world seconds does it take for 1 Year to pass at 1x speed?")]
-    [SerializeField] private float secondsPerYearBase = 15.0f; 
+    [SerializeField] private float secondsPerYearBase = 50.0f; 
 
     [Header("Current Rotations (Degrees Per Second)")]
     public float currentSunOrbitSpeed;
@@ -53,7 +53,9 @@ public class CampaignTimeManager : MonoBehaviour
     {
         UpdateUI();
 
-        EarthStateController.Instance.OnCalendarYearAdvanced();
+        EarthStateController.Instance.AdvancePolicy();
+        PolicyTreeManager.Instance.GeneratePoints();
+        PolicyTreeManager.Instance.RefreshTreeLayout();
         Debug.Log("Year Advanced");
         // Dynamic Era Check Example
         if (currentYear == 2000)

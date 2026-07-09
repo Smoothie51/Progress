@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: IND_05_TelegraphLines
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: IND_05
+  policyName: Telegraph Lines
+  description: Lay copper wire across continents for instant communication.
+  icon: {fileID: 0}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: 5c4f0f2ff51985546b170f3d76619088, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 1840
+  policyPointsNeeded: 2
+  positiveModifier: Rapid research sharing
+  negativeModifier: Minor resource drain
+  executionDurationYears: 5
+  metricShifts:
+    airQuality: 0
+    oceanCleanliness: 0
+    forestDensity: 0
+    biodiversityHealth: 0
+    magneticFieldStrength: 0
+    climateVolatility: 0
+    IndustrialCapacity: 0.02
+    researchCapacity: 0.05
+    economicGrowth: 0.05
+    energyAvailability: 0
+    resourceAvailability: 0
+    publicApproval: 0.05

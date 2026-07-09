@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: ECO_01_RoyalForestryDecrees
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: ECO_01
+  policyName: Forestry Decrees
+  description: Establish protections over lands to prevent over-logging.
+  icon: {fileID: 0}
+  mutuallyExclusiveWith: []
+  prerequisites: []
+  isRootNode: 1
+  minimumYearRequired: 1760
+  policyPointsNeeded: 1
+  positiveModifier: +Forest Density & Biodiversity
+  negativeModifier: '-Slightly limits early industry '
+  executionDurationYears: 5
+  metricShifts:
+    airQuality: 0
+    oceanCleanliness: 0
+    forestDensity: 0.05
+    biodiversityHealth: 0.02
+    magneticFieldStrength: 0
+    climateVolatility: 0
+    IndustrialCapacity: -0.01
+    researchCapacity: 0
+    economicGrowth: -0.01
+    energyAvailability: 0
+    resourceAvailability: 0
+    publicApproval: 0

@@ -46,30 +46,30 @@ public class EdgeGenerator : MonoBehaviour
             }
         }
 
-        // 2. Iterate through all nodes and use their data's child policies to draw lines
+        // 2. Iterate through all nodes and use their prerequisites to draw dependency lines
         foreach (PolicyRuntimeNode node in nodes)
         {
-            if (node == null || node.data == null || node.data.childPolicies == null) continue;
+            if (node == null || node.data == null || node.data.prerequisites == null) continue;
 
-            foreach (PolicyNodeData childData in node.data.childPolicies)
+            foreach (PolicyNodeData prereqData in node.data.prerequisites)
             {
-                if (childData == null || !dataToNodeMap.TryGetValue(childData, out PolicyRuntimeNode childNode)) continue;
+                if (prereqData == null || !dataToNodeMap.TryGetValue(prereqData, out PolicyRuntimeNode prereqNode)) continue;
 
                 GameObject lineObj = Instantiate(linePrefab, transform);
-                lineObj.name = $"{node.gameObject.name} -> {childNode.gameObject.name} Line";
+                lineObj.name = $"{prereqNode.gameObject.name} -> {node.gameObject.name} Line";
 
                 Image lineImg = lineObj.GetComponent<Image>();
                 RectTransform lineRect = lineObj.GetComponent<RectTransform>();
 
                 if (lineImg != null && lineRect != null)
                 {
-                    RectTransform parentRect = node.GetComponent<RectTransform>();
-                    RectTransform childRect = childNode.GetComponent<RectTransform>();
+                    RectTransform parentRect = prereqNode.GetComponent<RectTransform>();
+                    RectTransform childRect = node.GetComponent<RectTransform>();
 
                     // 3. Set pivot to middle-left so it stretches and rotates from its starting edge
                     lineRect.pivot = new Vector2(0f, 0.5f);
 
-                    // 4. Snap the start of the line exactly to the parent node's UI center coordinates
+                    // 4. Snap the start of the line exactly to the prerequisite node's UI center coordinates
                     lineRect.anchoredPosition = parentRect.anchoredPosition; 
 
                     // 5. Calculate the directional vector using pure UI coordinates
@@ -79,7 +79,7 @@ public class EdgeGenerator : MonoBehaviour
                     float distance = uiDirection.magnitude;
                     lineRect.sizeDelta = new Vector2(distance, 2f);
 
-                    // 7. Rotate line to point directly from parent node to child node
+                    // 7. Rotate line to point directly from prerequisite node to dependent node
                     float angle = Mathf.Atan2(uiDirection.y, uiDirection.x) * Mathf.Rad2Deg;
                     lineRect.localRotation = Quaternion.Euler(0, 0, angle);
 
@@ -87,7 +87,7 @@ public class EdgeGenerator : MonoBehaviour
                     lineObj.GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f); // Default locked color
 
                     // Store reference to update states visually later
-                    nodeLineMap.Add((lineImg, new PolicyRuntimeNode[] { node, childNode }));
+                    nodeLineMap.Add((lineImg, new PolicyRuntimeNode[] { prereqNode, node }));
                 }
             }
         }
@@ -118,63 +118,5 @@ public class EdgeGenerator : MonoBehaviour
             }
         }   
     }
-    // public void GenerateConnectionLines()
-    // {
-    //     if (linePrefab == null) return;
-
-    //     foreach (var child in childNodes)
-    //     {
-    //         if (child == null) continue;
-
-    //         GameObject lineObj = Instantiate(linePrefab, transform.Find("Edges"));
-    //         lineObj.name = $"{gameObject.name} - {child.gameObject.name} Line";
-
-    //         Image lineImg = lineObj.GetComponent<Image>();
-    //         RectTransform lineRect = lineObj.GetComponent<RectTransform>();
-
-    //         if (lineImg != null && lineRect != null)
-    //         {
-    //             // Set pivot to middle-left so it scales and rotates from the start node smoothly
-    //             lineRect.pivot = new Vector2(0f, 0.5f);
-    //             lineRect.anchoredPosition = Vector2.zero; // Start at this node's center
-
-    //             // Calculate local direction and distance to child node
-    //             Vector3 localChildPos = transform.InverseTransformPoint(child.transform.position);
-    //             float distance = localChildPos.magnitude;
-
-    //             // Set the line thickness and length
-    //             lineRect.sizeDelta = new Vector2(distance, 2f);
-
-    //             // Rotate line to point directly at the child node
-    //             float angle = Mathf.Atan2(localChildPos.y, localChildPos.x) * Mathf.Rad2Deg;
-    //             lineRect.localRotation = Quaternion.Euler(0, 0, angle);
-
-    //             lineObj.SetActive(true);
-
-    //             activeLines.Add((lineImg, child));
-    //         }
-    //     }
-    // }
-
-    // public void UpdateLineVisuals()
-    // {
-    //     foreach (var (line, child) in activeLines)
-    //     {
-    //         if (line == null) continue;
-
-    //         switch (child.currentState)
-    //         {
-    //             case NodeState.Unlocked:
-    //                 line.color = Color.cyan;
-    //                 break;
-    //             case NodeState.Available:
-    //                 line.color = Color.white; 
-    //                 break;
-    //             case NodeState.Locked:
-    //                 line.color = new Color(0.2f, 0.2f, 0.2f);
-    //                 break;
-    //         }
-    //     }
-    // }
 }
 

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: ECO_40_GardenWorldAscendancy
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: ECO_40
+  policyName: Garden World Ascendancy
+  description: Humanity steps back, turning Earth into a perfect galactic preserve.
+  icon: {fileID: 0}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: 386b2989f48ef6b40aeb791ea681dab1, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 2100
+  policyPointsNeeded: 50
+  positiveModifier: End of Industry, Dawn of Nature
+  negativeModifier: Game Over - Eco Victory
+  executionDurationYears: 50
+  metricShifts:
+    airQuality: 1
+    oceanCleanliness: 1
+    forestDensity: 1
+    biodiversityHealth: 1
+    magneticFieldStrength: 1
+    climateVolatility: -1
+    IndustrialCapacity: -1
+    researchCapacity: -1
+    economicGrowth: -1
+    energyAvailability: -1
+    resourceAvailability: -1
+    publicApproval: 0

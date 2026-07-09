@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: ECO_33_BioluminescentCrops
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: ECO_33
+  policyName: Bioluminescent Crops
+  description: Engineer crops to glow, removing the need for farm lighting.
+  icon: {fileID: 0}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: c679d90731ffb614b9a2ce143585fccf, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 2040
+  policyPointsNeeded: 9
+  positiveModifier: Saves grid energy
+  negativeModifier: Causes intense light pollution in nature
+  executionDurationYears: 15
+  metricShifts:
+    airQuality: 0
+    oceanCleanliness: 0
+    forestDensity: 0
+    biodiversityHealth: -0.05
+    magneticFieldStrength: 0
+    climateVolatility: 0
+    IndustrialCapacity: 0
+    researchCapacity: 0.1
+    economicGrowth: 0.02
+    energyAvailability: 0.05
+    resourceAvailability: 0
+    publicApproval: -0.02

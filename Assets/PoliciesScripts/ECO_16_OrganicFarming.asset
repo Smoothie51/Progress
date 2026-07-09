@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: ECO_16_OrganicFarming
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: ECO_16
+  policyName: Organic Farming
+  description: Ban all synthetic chemicals and return to natural compost cycles.
+  icon: {fileID: 0}
+  mutuallyExclusiveWith:
+  - {fileID: 11400000, guid: 4087abd9343985a41b41dc2c61ea5c0d, type: 2}
+  prerequisites:
+  - {fileID: 11400000, guid: 6bb352289f1709645bf51bb1ce79220e, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 1970
+  policyPointsNeeded: 4
+  positiveModifier: Restores local ecosystems
+  negativeModifier: Lower yields; requires massive land
+  executionDurationYears: 10
+  metricShifts:
+    airQuality: 0.02
+    oceanCleanliness: 0.05
+    forestDensity: -0.1
+    biodiversityHealth: 0.08
+    magneticFieldStrength: 0
+    climateVolatility: 0
+    IndustrialCapacity: -0.05
+    researchCapacity: 0
+    economicGrowth: -0.05
+    energyAvailability: 0
+    resourceAvailability: 0
+    publicApproval: 0.05

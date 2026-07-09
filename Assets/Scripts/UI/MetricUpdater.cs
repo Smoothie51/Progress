@@ -3,20 +3,33 @@ using UnityEngine.UI;
 
 public class MetricUpdater : MonoBehaviour
 {
+    [System.Serializable]
+    public struct SliderGroup
+    {
+        public Slider slider;
+        public Image fillImage; // Drag the "Fill" GameObject image component here!
+    }
     [Header("Environmental Sliders")]
-    [SerializeField] private Slider airQualitySlider;
-    [SerializeField] private Slider oceanCleanlinessSlider;
-    [SerializeField] private Slider forestDensitySlider;
-    [SerializeField] private Slider biodiversitySlider;
-    [SerializeField] private Slider magneticFieldSlider;
-    [SerializeField] private Slider volatilitySlider;
+    [SerializeField] private SliderGroup airQualitySlider;
+    [SerializeField] private SliderGroup oceanCleanlinessSlider;
+    [SerializeField] private SliderGroup forestDensitySlider;
+    [SerializeField] private SliderGroup biodiversitySlider;
+    [SerializeField] private SliderGroup magneticFieldSlider;
+    [SerializeField] private SliderGroup volatilitySlider;
 
     [Header("Industrial & Socio Sliders")]
-    [SerializeField] private Slider industrialCapacitySlider;
-    [SerializeField] private Slider researchCapacitySlider;
-    [SerializeField] private Slider economicGrowthSlider;
-    [SerializeField] private Slider energyAvailabilitySlider;
-    [SerializeField] private Slider resourceAvailabilitySlider;
+    [SerializeField] private SliderGroup industrialCapacitySlider;
+    [SerializeField] private SliderGroup researchCapacitySlider;
+    [SerializeField] private SliderGroup economicGrowthSlider;
+    [SerializeField] private SliderGroup energyAvailabilitySlider;
+    [SerializeField] private SliderGroup resourceAvailabilitySlider;
+
+    [Header("Compound Sliders")]
+    [SerializeField] private SliderGroup environmentIntegrity;
+    [SerializeField] private SliderGroup technologicalAdvancement;
+
+    [Header("Color Gradient Presets")]
+    [SerializeField] private Gradient healthColorGradient;
     private void OnEnable()
     {
         // Subscribe to the event when this menu is turned on/opened
@@ -36,24 +49,49 @@ public class MetricUpdater : MonoBehaviour
         EarthStateController.OnMetricsUpdated -= RefreshSliderUI;
     }
 
-    /// <summary>
-    /// Event receiver loop. Updates visual fills only when the backend data actually mutates!
-    /// </summary>
+    void Update()
+    {
+        refreshCompoundedSliders();
+    }
+
     private void RefreshSliderUI(EarthMetrics metrics)
     {
-        // Update all environmental value points safely
-        if (airQualitySlider != null) airQualitySlider.value = metrics.airQuality;
-        if (oceanCleanlinessSlider != null) oceanCleanlinessSlider.value = metrics.oceanCleanliness;
-        if (forestDensitySlider != null) forestDensitySlider.value = metrics.forestDensity;
-        if (biodiversitySlider != null) biodiversitySlider.value = metrics.biodiversityHealth;
-        if (magneticFieldSlider != null) magneticFieldSlider.value = metrics.magneticFieldStrength;
-        if (volatilitySlider != null) volatilitySlider.value = metrics.climateVolatility;
+        // Route values and apply dynamic color grading instantly
+        UpdateSliderState(airQualitySlider, metrics.airQuality, isInverted: false);
+        UpdateSliderState(oceanCleanlinessSlider, metrics.oceanCleanliness, isInverted: false);
+        UpdateSliderState(forestDensitySlider, metrics.forestDensity, isInverted: false);
+        UpdateSliderState(biodiversitySlider, metrics.biodiversityHealth, isInverted: false);
+        UpdateSliderState(magneticFieldSlider, metrics.magneticFieldStrength, isInverted: false);
+        UpdateSliderState(volatilitySlider, metrics.climateVolatility, isInverted: true);
 
-        // Update industrial/socio points safely
-        if (industrialCapacitySlider != null) industrialCapacitySlider.value = metrics.IndustrialCapacity;
-        if (researchCapacitySlider != null) researchCapacitySlider.value = metrics.researchCapacity;
-        if (economicGrowthSlider != null) economicGrowthSlider.value = metrics.economicGrowth;
-        if (energyAvailabilitySlider != null) energyAvailabilitySlider.value = metrics.energyAvailability;
-        if (resourceAvailabilitySlider != null) resourceAvailabilitySlider.value = metrics.resourceAvailability;    
+        //
+        UpdateSliderState(industrialCapacitySlider, metrics.IndustrialCapacity, isInverted: false);
+        UpdateSliderState(researchCapacitySlider, metrics.researchCapacity, isInverted: false);
+        UpdateSliderState(economicGrowthSlider, metrics.economicGrowth, isInverted: false);
+        UpdateSliderState(energyAvailabilitySlider, metrics.energyAvailability, isInverted: false);
+        UpdateSliderState(resourceAvailabilitySlider, metrics.resourceAvailability, isInverted: false);
+    }
+
+    private void UpdateSliderState(SliderGroup group, float rawValue, bool isInverted)
+    {
+        if (group.slider == null) return;
+
+        // Set the fill value instantly
+        group.slider.value = rawValue;
+
+        // Apply dynamic color shift if a fill reference is provided
+        if (group.fillImage != null)
+        {
+            // Evaluate color based on inversion layout rules
+            float evaluationTime = isInverted ? (1f - rawValue) : rawValue;
+            group.fillImage.color = healthColorGradient.Evaluate(evaluationTime);
+        }
+    }
+
+    private void refreshCompoundedSliders()
+    {
+        UpdateSliderState(environmentIntegrity,EarthStateController.Instance.EnvironmentalIntegrity, false);
+        UpdateSliderState(technologicalAdvancement,EarthStateController.Instance.TechnologicalAdvancement, false);
+
     }
 }

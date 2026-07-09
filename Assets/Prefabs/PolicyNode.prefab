@@ -252,9 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolicyRuntimeNode
   data: {fileID: 0}
-  edgeGenerator: {fileID: 0}
   currentState: 0
-  childNodes: []
   ringObject: {fileID: 5573556454273079457}
   iconObject: {fileID: 7849622974730885093}
   iconImage: {fileID: 5204251766477233616}

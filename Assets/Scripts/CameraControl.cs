@@ -27,6 +27,8 @@ public class EarthCameraController : MonoBehaviour
     private float panningYaw = 0f;
     private float panningPitch = 0f;
 
+    private bool isPointerOverUI;
+
     void OnEnable()
     {
         mousePanning.action.Enable();
@@ -59,10 +61,14 @@ public class EarthCameraController : MonoBehaviour
         HandleRotationAndTracking(); 
     }
 
+    void Update()
+    {
+        isPointerOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+    }
+
     void HandleZoom(InputAction.CallbackContext context)
     {
-        if (!(EventSystem.current == null || !EventSystem.current.IsPointerOverGameObject())) 
-            return;
+        if (isPointerOverUI) return;
         float scrollInput = context.ReadValue<Vector2>().y;
         
         if (Mathf.Abs(scrollInput) > 0.01f)
@@ -76,8 +82,7 @@ public class EarthCameraController : MonoBehaviour
 
     void MousePanning(InputAction.CallbackContext context)
     {
-        if (!(EventSystem.current == null || !EventSystem.current.IsPointerOverGameObject())) 
-            return;
+        if (isPointerOverUI) return;
         Vector2 delta = context.ReadValue<Vector2>();
 
         // Accumulate rotation modifications safely into our tracking variables

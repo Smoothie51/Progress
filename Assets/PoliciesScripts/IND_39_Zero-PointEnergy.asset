@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: IND_39_Zero-PointEnergy
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: IND_39
+  policyName: Zero-Point Energy
+  description: Tap into vacuum fluctuations for truly infinite, invisible power.
+  icon: {fileID: 0}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: d71444f4652314a4aaf7d8e8c1d4c984, type: 2}
+  - {fileID: 11400000, guid: 9a38b6003b43c5249b3e45cd96b95b90, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 2060
+  policyPointsNeeded: 20
+  positiveModifier: Solves all power needs
+  negativeModifier: Extreme research threshold
+  executionDurationYears: 25
+  metricShifts:
+    airQuality: 0.1
+    oceanCleanliness: 0.1
+    forestDensity: 0.1
+    biodiversityHealth: 0.1
+    magneticFieldStrength: 0
+    climateVolatility: 0
+    IndustrialCapacity: 0.1
+    researchCapacity: 0.2
+    economicGrowth: 0.2
+    energyAvailability: 0.4
+    resourceAvailability: 0
+    publicApproval: 0.2

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: IND_49_GalacticMegacorporation
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: IND_49
+  policyName: Galactic Megacorporation
+  description: Earth becomes the capital board-room for a stellar empire.
+  icon: {fileID: 0}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: 2dd1339f1b08d2e48be09fef120277f6, type: 2}
+  - {fileID: 11400000, guid: f7d2a388a4c074247aa2b2f13be9e2e7, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 2100
+  policyPointsNeeded: 50
+  positiveModifier: Total Industrial Victory
+  negativeModifier: Complete sociopathic efficiency
+  executionDurationYears: 50
+  metricShifts:
+    airQuality: 0
+    oceanCleanliness: 0
+    forestDensity: 0
+    biodiversityHealth: 0
+    magneticFieldStrength: 0
+    climateVolatility: 0
+    IndustrialCapacity: 1
+    researchCapacity: 1
+    economicGrowth: 1
+    energyAvailability: 1
+    resourceAvailability: 1
+    publicApproval: 0

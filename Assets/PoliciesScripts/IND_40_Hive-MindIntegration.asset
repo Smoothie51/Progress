@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: IND_40_Hive-MindIntegration
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: IND_40
+  policyName: Hive-Mind Integration
+  description: Link all human brains via neural chips.
+  icon: {fileID: 0}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: 4393704e91bda75468b1ab5974a05042, type: 2}
+  - {fileID: 11400000, guid: bdf9f2f0109f37744b985922a508ee89, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 2070
+  policyPointsNeeded: 20
+  positiveModifier: Zero crime, zero conflict
+  negativeModifier: The death of the individual
+  executionDurationYears: 20
+  metricShifts:
+    airQuality: 0.1
+    oceanCleanliness: 0.1
+    forestDensity: 0.1
+    biodiversityHealth: 0.1
+    magneticFieldStrength: 0
+    climateVolatility: 0
+    IndustrialCapacity: 0.2
+    researchCapacity: 0.3
+    economicGrowth: 0.2
+    energyAvailability: 0
+    resourceAvailability: 0
+    publicApproval: 0.5

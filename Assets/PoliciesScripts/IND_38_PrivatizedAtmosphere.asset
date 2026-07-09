@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: IND_38_PrivatizedAtmosphere
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: IND_38
+  policyName: Privatized Atmosphere
+  description: Corporations own the air scrubbers and charge to breathe.
+  icon: {fileID: 0}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: f7d2a388a4c074247aa2b2f13be9e2e7, type: 2}
+  - {fileID: 11400000, guid: 8ee0bd1a00482b34e9402b6d43a663e2, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 2060
+  policyPointsNeeded: 15
+  positiveModifier: Cleans the air rapidly
+  negativeModifier: The ultimate dystopia
+  executionDurationYears: 10
+  metricShifts:
+    airQuality: 0.3
+    oceanCleanliness: 0
+    forestDensity: 0
+    biodiversityHealth: 0
+    magneticFieldStrength: 0
+    climateVolatility: 0
+    IndustrialCapacity: 0.1
+    researchCapacity: 0.1
+    economicGrowth: 0.2
+    energyAvailability: 0
+    resourceAvailability: 0
+    publicApproval: 0
