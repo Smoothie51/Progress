@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: IND_22_CorporateDeregulation
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: IND_22
+  policyName: Corporate Deregulation
+  description: Remove all red tape to let the free market explode.
+  icon: {fileID: -3509130856273441519, guid: ecc0098b63bed3e4b9228b9ef12579e9, type: 3}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: f667a3ab12b8dc74fa7bab8af4139eb5, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 1980
+  policyPointsNeeded: 5
+  positiveModifier: 
+  negativeModifier: unscrupulous market tactics
+  executionDurationYears: 5
+  metricShifts:
+    airQuality: -0.05
+    oceanCleanliness: -0.05
+    forestDensity: -0.05
+    biodiversityHealth: -0.05
+    magneticFieldStrength: -0.03
+    climateVolatility: 0.05
+    IndustrialCapacity: 0.15
+    researchCapacity: 0.05
+    economicGrowth: 0.25
+    energyAvailability: 0
+    resourceAvailability: 0
+    publicApproval: 0

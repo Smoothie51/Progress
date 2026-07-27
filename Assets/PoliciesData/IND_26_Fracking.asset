@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: IND_26_Fracking
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: IND_26
+  policyName: Fracking
+  description: Inject chemical fluids into bedrock to extract trapped natural gas.
+  icon: {fileID: -7035444114028154375, guid: 202f37d8a71110447857c270271f9bca, type: 3}
+  mutuallyExclusiveWith:
+  - {fileID: 11400000, guid: e29d9008963f42e4d9c97245b6ab8f7b, type: 2}
+  prerequisites:
+  - {fileID: 11400000, guid: b36dd081274ba3948a18c55b9589c10d, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 2005
+  policyPointsNeeded: 5
+  positiveModifier: 
+  negativeModifier: Pollutes local rivers
+  executionDurationYears: 10
+  metricShifts:
+    airQuality: 0
+    oceanCleanliness: -0.08
+    forestDensity: 0
+    biodiversityHealth: -0.1
+    magneticFieldStrength: -0.03
+    climateVolatility: 0.02
+    IndustrialCapacity: 0.05
+    researchCapacity: 0
+    economicGrowth: 0.05
+    energyAvailability: 0.12
+    resourceAvailability: 0.05
+    publicApproval: 0

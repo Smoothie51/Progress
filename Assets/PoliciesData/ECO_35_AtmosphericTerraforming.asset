@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: ECO_35_AtmosphericTerraforming
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: ECO_35
+  policyName: Atmospheric Terraforming
+  description: Release designer LEO stationed atmospheric regulator to control global
+    weather.
+  icon: {fileID: -8950501233974875895, guid: 83acb50533437aa4485dc155a28f4c21, type: 3}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: 64435ecdcd21dd641afa86e1b8ae0944, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 2050
+  policyPointsNeeded: 15
+  positiveModifier: Total climate control
+  negativeModifier: Risk of gray-goo scenarios
+  executionDurationYears: 20
+  metricShifts:
+    airQuality: 0.2
+    oceanCleanliness: 0
+    forestDensity: 0
+    biodiversityHealth: 0
+    magneticFieldStrength: 0
+    climateVolatility: -0.3
+    IndustrialCapacity: 0
+    researchCapacity: 0.15
+    economicGrowth: 0.05
+    energyAvailability: -0.1
+    resourceAvailability: 0
+    publicApproval: 0.1

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: IND_34_InterplanetaryOutposts
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: IND_34
+  policyName: Interplanetary Outposts
+  description: Establish permanent human mining colonies on Mars.
+  icon: {fileID: 6933420189637718439, guid: e1db8399b72a2be4f9817e7423f4b61b, type: 3}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: b67fcac75b3e0b241953a44d312edf3f, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 2040
+  policyPointsNeeded: 15
+  positiveModifier: Secures humanity's survival
+  negativeModifier: Drains Earth's remaining resources
+  executionDurationYears: 25
+  metricShifts:
+    airQuality: 0
+    oceanCleanliness: 0
+    forestDensity: 0
+    biodiversityHealth: 0
+    magneticFieldStrength: 0
+    climateVolatility: 0
+    IndustrialCapacity: 0.15
+    researchCapacity: 0.25
+    economicGrowth: 0.1
+    energyAvailability: 0
+    resourceAvailability: 0
+    publicApproval: 0.15

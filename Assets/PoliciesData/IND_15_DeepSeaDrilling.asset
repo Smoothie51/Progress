@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: IND_15_DeepSeaDrilling
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: IND_15
+  policyName: Deep Sea Drilling
+  description: Tap into underwater oil reserves to feed energy demands.
+  icon: {fileID: 6312948808161005202, guid: 387b4b3a275b57d49b91fc0c4263d6fd, type: 3}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: 97a88977cb82a4f44a7352f7170b073c, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 1950
+  policyPointsNeeded: 5
+  positiveModifier: Massive energy influx
+  negativeModifier: Severe ocean pollution risk
+  executionDurationYears: 8
+  metricShifts:
+    airQuality: 0
+    oceanCleanliness: -0.15
+    forestDensity: 0
+    biodiversityHealth: -0.05
+    magneticFieldStrength: -0.05
+    climateVolatility: 0.05
+    IndustrialCapacity: 0.05
+    researchCapacity: 0.02
+    economicGrowth: 0.05
+    energyAvailability: 0.15
+    resourceAvailability: 0
+    publicApproval: 0

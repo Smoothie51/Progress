@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: ECO_02_CropRotation
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: ECO_02
+  policyName: Crop Rotation Farming
+  description: Rotate crops to prevent total nutrient depletion in the soil.
+  icon: {fileID: 21300000, guid: 989eb932242cdfe498caf8f7e8ae0e38, type: 3}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: b6231d0c7a2171a408ec81fbc2b64d1d, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 1760
+  policyPointsNeeded: 1
+  positiveModifier: Arable soil depletes at a much slower rate
+  negativeModifier: 
+  executionDurationYears: 5
+  metricShifts:
+    airQuality: 0
+    oceanCleanliness: 0
+    forestDensity: 0
+    biodiversityHealth: 0.01
+    magneticFieldStrength: 0
+    climateVolatility: 0
+    IndustrialCapacity: 0
+    researchCapacity: 0
+    economicGrowth: 0.02
+    energyAvailability: 0
+    resourceAvailability: 0
+    publicApproval: 0.02

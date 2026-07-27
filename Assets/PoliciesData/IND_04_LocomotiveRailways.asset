@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: IND_04_LocomotiveRailways
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: IND_04
+  policyName: Locomotive Railways
+  description: Connect cities with iron horses to revolutionize transport.
+  icon: {fileID: -4985997577327666028, guid: eae875d411b68da4cae65eb6d2999eeb, type: 3}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: 837d3dfb157529244bc53121414a04d4, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 1830
+  policyPointsNeeded: 3
+  positiveModifier: Logistics revolution
+  negativeModifier: Fragments forests
+  executionDurationYears: 8
+  metricShifts:
+    airQuality: 0
+    oceanCleanliness: 0
+    forestDensity: -0.05
+    biodiversityHealth: 0
+    magneticFieldStrength: 0
+    climateVolatility: 0
+    IndustrialCapacity: 0.05
+    researchCapacity: 0.02
+    economicGrowth: 0.08
+    energyAvailability: 0
+    resourceAvailability: 0
+    publicApproval: 0.05

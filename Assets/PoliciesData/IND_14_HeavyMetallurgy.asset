@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: IND_14_HeavyMetallurgy
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: IND_14
+  policyName: Heavy Metallurgy
+  description: Develop super-alloys required for megastructures.
+  icon: {fileID: -7553428722161056255, guid: 5c78a84f0abf1f2478ca34a0d75c7dd9, type: 3}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: 21da2499080c486479665659502c4ec9, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 1940
+  policyPointsNeeded: 5
+  positiveModifier: Unlocks advanced tech
+  negativeModifier: Extremely toxic runoff
+  executionDurationYears: 10
+  metricShifts:
+    airQuality: 0
+    oceanCleanliness: -0.15
+    forestDensity: 0
+    biodiversityHealth: -0.05
+    magneticFieldStrength: -0.03
+    climateVolatility: 0
+    IndustrialCapacity: 0.12
+    researchCapacity: 0.05
+    economicGrowth: 0.05
+    energyAvailability: 0
+    resourceAvailability: 0.05
+    publicApproval: 0

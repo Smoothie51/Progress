@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: ECO_13_RenewableSubsidies
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: ECO_13
+  policyName: Renewable Subsidies
+  description: Inject cash into green tech to make it cheaper than fossil fuels.
+  icon: {fileID: -4754490279205029509, guid: a3fd3720bf008f542b30b14942ccfeb4, type: 3}
+  mutuallyExclusiveWith:
+  - {fileID: 11400000, guid: 9cb980c43d3dda549a6e60926fd15440, type: 2}
+  prerequisites:
+  - {fileID: 11400000, guid: 8bcef21aa3914334b8e87de9e542e6a4, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 1970
+  policyPointsNeeded: 5
+  positiveModifier: Spurs green tech
+  negativeModifier: High economic cost
+  executionDurationYears: 10
+  metricShifts:
+    airQuality: 0.05
+    oceanCleanliness: 0
+    forestDensity: 0
+    biodiversityHealth: 0
+    magneticFieldStrength: 0
+    climateVolatility: -0.02
+    IndustrialCapacity: -0.05
+    researchCapacity: 0.08
+    economicGrowth: -0.05
+    energyAvailability: 0
+    resourceAvailability: 0
+    publicApproval: 0.05

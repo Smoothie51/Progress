@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: SUS_03_SmartGrids
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: SUS_03
+  policyName: Smart Grids
+  description: Use AI to perfectly route and balance global renewable electricity.
+  icon: {fileID: -5903654088797649968, guid: dca9dbde11337f643b6f7f77523fae24, type: 3}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: ed68333b70a3ce046bf9c70875582f42, type: 2}
+  - {fileID: 11400000, guid: 8eb7b5dad4c81d34ea1a6471b27bc85d, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 2010
+  policyPointsNeeded: 10
+  positiveModifier: Maximum energy efficiency
+  negativeModifier: Vulnerable to cyber attacks
+  executionDurationYears: 10
+  metricShifts:
+    airQuality: 0
+    oceanCleanliness: 0
+    forestDensity: 0
+    biodiversityHealth: 0
+    magneticFieldStrength: 0
+    climateVolatility: 0
+    IndustrialCapacity: 0.05
+    researchCapacity: 0.15
+    economicGrowth: 0.05
+    energyAvailability: 0.15
+    resourceAvailability: 0
+    publicApproval: 0.05

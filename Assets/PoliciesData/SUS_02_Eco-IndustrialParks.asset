@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: SUS_02_Eco-IndustrialParks
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: SUS_02
+  policyName: Eco-Industrial Parks
+  description: Factories share resources where one's waste is another's fuel.
+  icon: {fileID: -7597467968466121013, guid: fbde9e9b12c81d442b08660ca584e355, type: 3}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: f667a3ab12b8dc74fa7bab8af4139eb5, type: 2}
+  - {fileID: 11400000, guid: 983810dc5f5f2a04ea8fb529d68a99ea, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 1980
+  policyPointsNeeded: 8
+  positiveModifier: 
+  negativeModifier: 
+  executionDurationYears: 15
+  metricShifts:
+    airQuality: 0.1
+    oceanCleanliness: 0.1
+    forestDensity: 0
+    biodiversityHealth: 0
+    magneticFieldStrength: 0
+    climateVolatility: 0
+    IndustrialCapacity: 0.1
+    researchCapacity: 0.1
+    economicGrowth: 0.1
+    energyAvailability: 0
+    resourceAvailability: 0.1
+    publicApproval: 0.1

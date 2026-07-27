@@ -7,6 +7,8 @@ public class CampaignTimeManager : MonoBehaviour
 
     [Header("UI Reference")]
     [SerializeField] private TextMeshProUGUI yearTextDisplay;
+    [SerializeField] private GameObject EndScreenUI;
+    [SerializeField] private TextMeshProUGUI EndScoreText;
 
     [Header("Calendar Settings (1x Speed)")]
     public int currentYear = 1760;
@@ -52,24 +54,27 @@ public class CampaignTimeManager : MonoBehaviour
     void OnYearAdvanced()
     {
         UpdateUI();
+        if (currentYear >= 2026)
+        {
+            float[] scores = EarthStateController.Instance.CalculateFinalScore();
+            EndScreenUI.SetActive(true);
+            EndScoreText.text = $"Final Score: <color=#FFD700>{scores[2]:F2}</color>\nEnvironmental Score: <color=green>{scores[0]:F2}</color>\nTechnological Score: <color=#4169E1>{scores[1]:F2}</color>";
+            Time.timeScale = 0f;
+        }
 
         EarthStateController.Instance.AdvancePolicy();
         PolicyTreeManager.Instance.GeneratePoints();
         PolicyTreeManager.Instance.RefreshTreeLayout();
-        Debug.Log("Year Advanced");
-        // Dynamic Era Check Example
-        if (currentYear == 2000)
-        {
-            Debug.Log("Welcome to the 4th Industrial Revolution!");
-            // Trigger 4IR specific graphics or global baseline updates here
-        }
     }
 
     void UpdateUI()
     {
         if (yearTextDisplay != null)
         {
-            yearTextDisplay.text = $"YEAR: {currentYear}";
+            if (currentYear > 2000)
+                yearTextDisplay.text = $"YEAR: <color=red> {currentYear}</color> / 2026";
+            else
+                yearTextDisplay.text = $"YEAR: {currentYear} / 2026";
         }
     }
 

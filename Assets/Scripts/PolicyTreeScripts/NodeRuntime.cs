@@ -47,7 +47,8 @@ public class PolicyRuntimeNode : MonoBehaviour, IPointerEnterHandler, IPointerEx
             }
         }
         if (unlockedPolicies.Contains(data)) return NodeState.Unlocked;
-        if (currentYear < data.minimumYearRequired) return NodeState.Locked;
+        // Year requirement removedd for more simulations based gameplay
+        //if (currentYear < data.minimumYearRequired) return NodeState.Locked;
         if (data.isRootNode) return NodeState.Available;
         
         foreach (var prereq in data.prerequisites) // Check if all prerequisites are unlocked 
@@ -64,7 +65,7 @@ public class PolicyRuntimeNode : MonoBehaviour, IPointerEnterHandler, IPointerEx
             case NodeState.Locked:  // Greyed + no ring + non-interactable
                 ringObject.SetActive(false);
                 nodeButton.interactable = false;
-                if (permanentlyDisabled) 
+                if (permanentlyDisabled)  
                     iconImage.color = new Color(0.4f, 0.1f, 0.1f, 0.5f);
                 else
                     iconImage.color = Color.gray;

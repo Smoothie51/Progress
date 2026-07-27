@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: ECO_31_StratosphericAerosols
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: ECO_31
+  policyName: Stratospheric Aerosols
+  description: 'Spray reflective particles into the upper atmosphere to reflect sunlight. '
+  icon: {fileID: -711037308405223642, guid: bcc790234303f974dacb313bb6e3c183, type: 3}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: 6f96169a83859b644bb90b692ebb8bde, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 2030
+  policyPointsNeeded: 10
+  positiveModifier: Cools the planet
+  negativeModifier: Turns the sky gray; unpredictable
+  executionDurationYears: 5
+  metricShifts:
+    airQuality: 0
+    oceanCleanliness: 0
+    forestDensity: 0
+    biodiversityHealth: -0.05
+    magneticFieldStrength: 0
+    climateVolatility: -0.2
+    IndustrialCapacity: 0
+    researchCapacity: 0.05
+    economicGrowth: 0
+    energyAvailability: 0
+    resourceAvailability: 0
+    publicApproval: -0.15

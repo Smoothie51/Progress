@@ -15,7 +15,8 @@ public class GameMenuUI : MonoBehaviour
     }
     public void onRestartClick()
     {
-        Debug.Log("Restart Clicked");
+        Debug.Log("restart Clicked");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void onExitClick()
     {

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: IND_25_DataCenters
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: IND_25
+  policyName: Data Centers
+  description: Build sprawling server farms to host the digital internet.
+  icon: {fileID: 338518334107979345, guid: 81b1aba6bcb304b4d88f6ca4bad8bf7c, type: 3}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: ed68333b70a3ce046bf9c70875582f42, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 1995
+  policyPointsNeeded: 6
+  positiveModifier: 
+  negativeModifier: 
+  executionDurationYears: 10
+  metricShifts:
+    airQuality: -0.03
+    oceanCleanliness: -0.1
+    forestDensity: -0.08
+    biodiversityHealth: 0
+    magneticFieldStrength: 0
+    climateVolatility: 0.02
+    IndustrialCapacity: 0.05
+    researchCapacity: 0.15
+    economicGrowth: 0.12
+    energyAvailability: 0
+    resourceAvailability: 0
+    publicApproval: 0.05

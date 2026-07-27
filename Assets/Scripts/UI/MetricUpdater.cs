@@ -49,6 +49,11 @@ public class MetricUpdater : MonoBehaviour
         EarthStateController.OnMetricsUpdated -= RefreshSliderUI;
     }
 
+    void Start()
+    {
+        RefreshSliderUI(EarthStateController.Instance.currentMetrics);
+    }
+
     void Update()
     {
         refreshCompoundedSliders();

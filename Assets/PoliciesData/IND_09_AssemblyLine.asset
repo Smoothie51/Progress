@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: IND_09_AssemblyLine
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: IND_09
+  policyName: Assembly Line
+  description: Standardize production lines to pump out goods rapidly.
+  icon: {fileID: 5914854232455881044, guid: f8fc371779004cd469fc541289cbb615, type: 3}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: 97a88977cb82a4f44a7352f7170b073c, type: 2}
+  - {fileID: 11400000, guid: 191fe8c8d873f6f4db17a1011a43a44f, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 1910
+  policyPointsNeeded: 4
+  positiveModifier: 
+  negativeModifier: 
+  executionDurationYears: 5
+  metricShifts:
+    airQuality: -0.03
+    oceanCleanliness: -0.1
+    forestDensity: 0
+    biodiversityHealth: 0
+    magneticFieldStrength: 0
+    climateVolatility: 0.02
+    IndustrialCapacity: 0.15
+    researchCapacity: 0.03
+    economicGrowth: 0.15
+    energyAvailability: 0
+    resourceAvailability: 0
+    publicApproval: 0.04

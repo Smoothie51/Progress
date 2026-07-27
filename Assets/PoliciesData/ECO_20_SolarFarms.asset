@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: ECO_20_SolarFarms
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: ECO_20
+  policyName: Solar Farms
+  description: Coat deserts in photovoltaic cells to capture the sun's energy.
+  icon: {fileID: 8792846023710875468, guid: a0a8db5b6f8a4f648a43f8ec5e014bbb, type: 3}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: 983810dc5f5f2a04ea8fb529d68a99ea, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 2000
+  policyPointsNeeded: 6
+  positiveModifier: Clean energy grid
+  negativeModifier: Takes up massive landmass
+  executionDurationYears: 12
+  metricShifts:
+    airQuality: 0.05
+    oceanCleanliness: 0
+    forestDensity: -0.02
+    biodiversityHealth: 0
+    magneticFieldStrength: 0
+    climateVolatility: -0.02
+    IndustrialCapacity: 0.01
+    researchCapacity: 0.05
+    economicGrowth: 0
+    energyAvailability: 0.1
+    resourceAvailability: -0.05
+    publicApproval: 0.05

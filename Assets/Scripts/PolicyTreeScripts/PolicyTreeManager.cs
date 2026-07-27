@@ -55,9 +55,9 @@ public class PolicyTreeManager : MonoBehaviour
     {
         if (policy == null) return false;
         if (unlockedPolicies.Contains(policy)) return false;
-        if (policyPoints < policy.policyPointsNeeded) return false;
+        //if (policyPoints < policy.policyPointsNeeded) return false;
 
-        policyPoints -= policy.policyPointsNeeded;
+        //policyPoints -= policy.policyPointsNeeded;
         UpdatePolicyPointsText();
 
         unlockedPolicies.Add(policy);

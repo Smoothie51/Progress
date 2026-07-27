@@ -179,4 +179,13 @@ public class EarthStateController : MonoBehaviour
         EarthShaderController.Instance.UpdateCityLights(currentMetrics,year);
         EarthShaderController.Instance.UpdateEarthSaturation(currentMetrics);
     }
+
+    public float[] CalculateFinalScore()
+    {
+        float environmentalScore = EnvironmentalIntegrity * 100f; // Scale to 0-100
+        float technologicalScore = TechnologicalAdvancement * 100f; // Scale to 0
+        float finalScore = (environmentalScore + technologicalScore) / 2f; // Average the two scores
+        float[] score = { environmentalScore, technologicalScore, finalScore };
+        return score;
+    }
 }

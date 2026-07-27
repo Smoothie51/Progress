@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3775335ba9c1c8a448920018deb643b9, type: 3}
+  m_Name: ECO_29_CoralReefRestoration
+  m_EditorClassIdentifier: Assembly-CSharp::PolicyNodeData
+  id: ECO_29
+  policyName: Coral Reef Restoration
+  description: Genetically engineer heat-resistant coral to save the reefs.
+  icon: {fileID: 8865657350614074487, guid: 16fbdb34f74daa64e94b55c6512f49cf, type: 3}
+  mutuallyExclusiveWith: []
+  prerequisites:
+  - {fileID: 11400000, guid: 07475b37304f8b147b97f74bcd7937b1, type: 2}
+  isRootNode: 0
+  minimumYearRequired: 2025
+  policyPointsNeeded: 7
+  positiveModifier: Protects marine nurseries
+  negativeModifier: High research cost
+  executionDurationYears: 15
+  metricShifts:
+    airQuality: 0
+    oceanCleanliness: 0.05
+    forestDensity: 0
+    biodiversityHealth: 0.15
+    magneticFieldStrength: 0
+    climateVolatility: 0
+    IndustrialCapacity: 0
+    researchCapacity: 0.05
+    economicGrowth: -0.02
+    energyAvailability: 0
+    resourceAvailability: 0
+    publicApproval: 0.05
